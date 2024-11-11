@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Spinner Example</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        /* Estilos para el overlay de carga */
+        #loading {
+            position: fixed; /* Fijo en la pantalla */
+            top: 0;
+            left: 0;
+            width: 100%; /* Cubre todo el ancho */
+            height: 100%; /* Cubre toda la altura */
+            display: flex; /* Centra el contenido */
+            align-items: center; /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente */
+            background-color: white; /* Fondo blanco */
+            z-index: 9999; /* Asegura que esté sobre otros elementos */
+            opacity: 1; /* Comienza completamente visible */
+            transition: opacity 1s ease; /* Transición suave de 1 segundo */
+            flex-direction: column;
+        }
+
+        /* Animación de rotación para las imágenes */
+        .spinner-image {
+            animation: spin 1s linear infinite;
+        }
+
+        /* Tamaño específico para la primera imagen */
+        .carga1 {
+            width: 80px; /* Tamaño ajustable */
+        }
+
+        /* Tamaño específico para la segunda imagen */
+        .carga {
+            width: 150px; /* Tamaño ajustable */
+        }
+
+        /* Estado inicial del contenido de la página */
+        #content {
+            opacity: 0; /* Comienza invisible */
+            transition: opacity 1s ease; /* Transición suave de 1 segundo */
+        }
+
+        /* Clase para mostrar el contenido */
+        #content.show {
+            opacity: 1; /* Aparece con transición suave */
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Overlay de carga con imagen giratoria -->
+    <div id="loading">
+        <img src="https://i.pinimg.com/originals/19/dc/36/19dc36bb40096eecf23706f4a9bee1a9.gif" class="spinner-image carga1" alt="Loading...">
+        <img src="https://mever.iti.gr/forensics/imgs/loading_holder.gif" class="spinner-image carga" alt="Loading...">
+    </div>
+
+    <!-- Contenido principal de la página -->
+    <div id="content" class="container mt-5">
+        <h1>Welcome to the Page</h1>
+        <p>This is the main content of the page that will show after loading.</p>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <script>
+        // Simula un tiempo de carga prolongado (por ejemplo, 5 segundos)
+        setTimeout(function() {
+            // Desvanece el overlay de carga
+            document.getElementById("loading").style.opacity = "0";
+
+            // Espera a que la transición se complete antes de ocultar el elemento
+            setTimeout(function() {
+                // Oculta el overlay de carga después de que se desvanezca
+                document.getElementById("loading").style.display = "none";
+                
+                // Muestra el contenido con una transición suave
+                document.getElementById("content").classList.add("show");
+            }, 1000); // Coincide con la duración de la transición (1 segundo)
+        }, 5000); // Ajusta este tiempo según sea necesario (5 segundos para pruebas)
+    </script>
+
+</body>
+</html>
