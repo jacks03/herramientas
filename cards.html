@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadatos básicos para configurar el documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* Variables de CSS para definir la altura y el ancho de la tarjeta */
+    :root {
+        --card-height: 400px;
+        --card-width: calc(var(--card-height) / 1.5);
+    }
+    /* Configuración de la caja y el modelo de box-sizing */
+    * {
+        box-sizing: border-box;
+    }
+    /* Estilizado del cuerpo de la página */
+    body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #191c29; /* Fondo oscuro */
+    }
+    /* Estilo base de la tarjeta */
+    .card {
+        width: var(--card-width);
+        height: var(--card-height);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 0 36px;
+        perspective: 2500px; /* Perspectiva para efecto 3D */
+        margin: 0 50px;
+    }
+    /* Imagen de fondo de la tarjeta */
+    .cover-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ajuste de la imagen */
+    }
+    /* Contenedor principal de la tarjeta */
+    .wrapper {
+        transition: all 0.5s;
+        position: absolute;
+        width: 100%;
+        z-index: -1; /* Colocar detrás del resto de elementos */
+    }
+    /* Efecto hover para la tarjeta */
+    .card:hover .wrapper {
+        transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+        box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75); /* Sombra */
+    }
+    /* Pseudo-elementos para crear efectos de degradado */
+    .wrapper::before,
+    .wrapper::after {
+        content: "";
+        opacity: 0;
+        width: 100%;
+        height: 80px;
+        transition: all 0.5s;
+        position: absolute;
+        left: 0;
+    }
+    .wrapper::before {
+        top: 0;
+        height: 100%;
+        background-image: linear-gradient(to top, transparent 46%, rgba(12, 13, 19, 0.5) 68%, rgba(12, 13, 19) 97%);
+    }
+    .wrapper::after {
+        bottom: 0;
+        opacity: 1;
+        background-image: linear-gradient(to bottom, transparent 46%, rgba(12, 13, 19, 0.5) 68%, rgba(12, 13, 19) 97%);
+    }
+    /* Efecto de hover para mostrar gradientes */
+    .card:hover .wrapper::before,
+    .wrapper::after {
+        opacity: 1;
+    }
+    .card:hover .wrapper::after {
+        height: 120px; /* Incremento de la altura al hacer hover */
+    }
+    /* Estilo para la imagen de título */
+    .title {
+        width: 100%;
+        transition: transform 0.5s; /* Animación de transformación */
+    }
+    .card:hover .title {
+        transform: translate3d(0%, -50px, 100px); /* Efecto de desplazamiento */
+    }
+    /* Estilo para el personaje dentro de la tarjeta */
+    .character {
+        width: 100%;
+        opacity: 0; /* Oculto por defecto */
+        transition: all 0.5s;
+        position: absolute;
+        z-index: -1;
+    }
+    .card:hover .character {
+        opacity: 1; /* Se muestra al hacer hover */
+        transform: translate3d(0%, -30%, 100px); /* Desplazamiento en 3D */
+    }
+</style>
+<body>
+    <!-- Enlace a la página de Yoshi -->
+    <a href="https://mario.fandom.com/es/wiki/Yoshi" alt="Mythrill" target="_blank">
+        <div class="card">
+            <div class="wrapper">
+                <img src="https://posterdrops-images.s3.amazonaws.com/art_images/YOSHIS_ISLAND_variant_6e4c20c9-017c-4819-9497-e054648392cc_1024x1024_1670281479.jpg" class="cover-image" />
+            </div>
+            <img src="./img/yoshi_name.webp" class="title" />
+            <img src="https://images.wikidexcdn.net/mwuploads/esssbwiki/thumb/a/a9/latest/20211026212542/Yoshi_Mario_Party_Superstars.png/800px-Yoshi_Mario_Party_Superstars.png" class="character" />
+        </div>
+    </a>
+    
+    <!-- Enlace a la página de Braum -->
+    <a href="https://www.leagueoflegends.com/es-es/champions/braum/" alt="Mythrill" target="_blank">
+        <div class="card">
+            <div class="wrapper">
+                <img src="/img/Braum/fondo.png" class="cover-image" />
+            </div>
+            <img src="/img/Braum/Braum name.png" class="title" />
+            <img src="./img/Braum/braum1.png" class="character" />
+        </div>
+    </a>
+        <!-- Enlace a la página de Braum -->
+        <a href="https://www.leagueoflegends.com/es-es/champions/braum/" alt="Mythrill" target="_blank">
+            <div class="card">
+                <div class="wrapper">
+                    <img src="/img/Braum/fondo.png" class="cover-image" />
+                </div>
+                <img src="/img/Braum/Braum name.png" class="title" />
+                <img src="./img/Braum/braum1.png" class="character" />
+            </div>
+        </a>
+</body>
+</html>
